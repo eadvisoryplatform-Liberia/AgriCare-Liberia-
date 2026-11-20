@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agro Care Liberia</title>
+<meta name="theme-color" content="#0f3d2a">
+<link rel="icon" href="../assets/logo.jpg">
+<style>
+:root{--bg:#f1f6ef;--card:#fff;--ink:#14291e;--muted:#5d7064;--line:#dbe6d8;--forest:#0f3d2a;--leaf:#1f9156;--mint:#d9f0df;--gold:#f0b232;--goldsoft:#fff1cc;--goldtxt:#7a5200;--blue:#1d4f9f;--bluesoft:#dbe8fb;--red:#c23b32;--redsoft:#fde3e0;--shadow:0 6px 18px rgba(15,61,42,.12);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a13;--card:#15261c;--ink:#e8f2e8;--muted:#9bb2a2;--line:#28402f;--forest:#0a2a1d;--leaf:#3fc97f;--mint:#1c3a28;--goldsoft:#3a3114;--goldtxt:#f0c768;--blue:#8fb4f2;--bluesoft:#1b2e4d;--red:#f0968e;--redsoft:#3b1d1b;--shadow:none}}
+:root[data-theme="dark"]{--bg:#0c1a13;--card:#15261c;--ink:#e8f2e8;--muted:#9bb2a2;--line:#28402f;--forest:#0a2a1d;--leaf:#3fc97f;--mint:#1c3a28;--goldsoft:#3a3114;--goldtxt:#f0c768;--blue:#8fb4f2;--bluesoft:#1b2e4d;--red:#f0968e;--redsoft:#3b1d1b;--shadow:none}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--forest)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Avenir Next","Segoe UI",Roboto,system-ui,sans-serif;padding-bottom:96px;min-height:100vh}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--forest);z-index:60}
+h1,h2,h3{margin:0;letter-spacing:-.01em}
+h2{font-size:1.35rem;font-weight:800}
+h3{font-size:1rem;font-weight:700;margin:14px 0 6px}
+main{max-width:760px;margin:0 auto;padding:14px 16px}
+.top{background:var(--forest);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:10px;font-size:1.1rem}
+.logo{width:38px;height:38px;border-radius:12px;background:var(--gold);color:var(--forest);display:grid;place-items:center}
+.lp{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border-radius:999px;padding:4px 10px}
+.lp select{background:transparent;color:#fff;border:0;font:inherit;font-weight:600;max-width:34vw}
+.lp select option{color:#14291e}
+.hero{position:relative;background:linear-gradient(170deg,#0f3d2a,#1f7a4d 70%,#3fae6a);color:#fff;overflow:hidden;border-radius:0 0 28px 28px;min-height:210px}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-t{position:relative;padding:22px 20px 70px;max-width:760px;margin:0 auto}
+.hero h1{font-size:1.9rem;font-weight:800;line-height:1.1}
+.hero p{margin:8px 0 0;max-width:30ch;opacity:.95}
+.drift{animation:drift 30s linear infinite alternate}
+@keyframes drift{to{transform:translateX(40px)}}
+@media (prefers-reduced-motion:reduce){.drift{animation:none}}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.tile{display:flex;align-items:center;gap:12px;background:var(--card);border:0;border-radius:18px;padding:16px 12px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);font:inherit;cursor:pointer;min-height:76px}
+.tile.wide{grid-column:1/-1;background:var(--forest);color:#fff}
+.tic{width:48px;height:48px;border-radius:14px;background:var(--c);color:#fff;display:grid;place-items:center;flex:none}
+.tile b{font-size:1rem}
+.snap,.alert{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--card);border:0;border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);margin-top:-48px;position:relative;cursor:pointer}
+.snap b{font-size:1.6rem;display:block;line-height:1.1}
+.alert{margin-top:12px;border-left:6px solid var(--gold)}
+.alert.high{border-left-color:var(--red)}
+.alert small{display:block;color:var(--muted)}
+.ai{width:40px;height:40px;border-radius:12px;background:var(--redsoft);color:var(--red);display:grid;place-items:center;flex:none}
+.ph{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.phi{width:42px;height:42px;border-radius:13px;background:var(--forest);color:var(--gold);display:grid;place-items:center}
+.card,.panel{background:var(--card);border-radius:18px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
+.muted{color:var(--muted);font-size:.88rem}
+.note{background:var(--goldsoft);border-radius:14px;padding:11px 13px;font-size:.92rem;margin:10px 0}
+select,input[type=text],input[type=tel],input[type=url],input[type=password],textarea{width:100%;font:inherit;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink)}
+label{display:block;font-size:.85rem;font-weight:700;margin:12px 0 4px}
+.lp,.lp select{width:auto}
+.btn{font:700 .92rem system-ui,sans-serif;border:2px solid var(--leaf);background:transparent;color:var(--leaf);border-radius:999px;padding:10px 18px;cursor:pointer;min-height:44px;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn.solid{background:var(--leaf);color:#fff}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#3b2a00}
+.btn.small{padding:7px 14px;min-height:38px;font-size:.84rem}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px}
+.chip{flex:none;border:0;background:var(--card);color:var(--ink);border-radius:999px;padding:9px 16px;font:inherit;font-weight:600;font-size:.9rem;cursor:pointer;min-height:42px;box-shadow:var(--shadow)}
+.chip[aria-pressed="true"]{background:var(--forest);color:#fff}
+.tag{display:inline-block;font-size:.76rem;font-weight:700;border-radius:999px;padding:2px 10px;margin-right:6px;background:var(--mint);color:var(--leaf)}
+.tag.buyer{background:var(--bluesoft);color:var(--blue)}
+.tag.supplier,.tag.demo,.tag.medium{background:var(--goldsoft);color:var(--goldtxt)}
+.tag.high{background:var(--red);color:#fff}
+.ct{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.7rem;background:hsl(var(--h) 75% 88%);flex:none}
+.lc{background:var(--card);border-radius:20px;margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden}
+.lc-i{height:130px;display:grid;place-items:center;background:linear-gradient(135deg,hsl(var(--h) 70% 86%),hsl(var(--h) 60% 74%));font-size:3.4rem}
+.lc-i img{width:100%;height:100%;object-fit:cover}
+.lc-b{padding:12px 14px 14px}
+.price{font-size:1.25rem;font-weight:800;color:var(--leaf)}
+.pin{color:var(--muted);font-size:.88rem}
+.addb{list-style:none;cursor:pointer;background:var(--gold);color:#3b2a00;font-weight:800;border-radius:999px;padding:12px 18px;text-align:center;margin:6px 0 12px;min-height:46px}
+.addb::-webkit-details-marker{display:none}
+details.add>div{background:var(--card);border-radius:18px;padding:4px 14px 14px;margin-bottom:12px;box-shadow:var(--shadow)}
+details.q{background:var(--card);border-radius:16px;margin-bottom:10px;box-shadow:var(--shadow)}
+details.q>summary{cursor:pointer;padding:13px 14px;font-weight:700}
+details.q>div{padding:0 14px 12px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.ctile,.opt{display:flex;align-items:center;gap:10px;background:var(--card);border:2px solid transparent;border-radius:18px;padding:12px;font:inherit;color:var(--ink);text-align:left;cursor:pointer;box-shadow:var(--shadow);min-height:70px}
+.ctile.on,.opt.on{border-color:var(--leaf)}
+.ctile{flex-direction:column;justify-content:center;text-align:center;font-weight:700}
+.opt{width:100%;margin-bottom:10px}
+.cal{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin:4px 0 10px}
+.cal i{font-style:normal;font-size:.7rem;text-align:center;border-radius:6px;padding:5px 0;background:var(--line);color:var(--muted)}
+.cal i.r{background:var(--bluesoft);color:var(--blue)}
+.cal i.p{background:var(--leaf);color:#fff;font-weight:700}
+.wxhero{display:flex;align-items:center;gap:16px;border-radius:24px;padding:18px;color:#fff;background:linear-gradient(150deg,#2a8fd1,#6cc3ee)}
+.wxhero.wx-rain,.wxhero.wx-fog{background:linear-gradient(150deg,#4b6b86,#8aa4b8)}
+.wxhero.wx-storm{background:linear-gradient(150deg,#2f3b52,#667792)}
+.wxhero.wx-clear{background:linear-gradient(150deg,#f08a24,#f6c453)}
+.big{font-size:3.2rem;font-weight:800;line-height:1}
+.fcs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.fc{flex:none;width:68px;background:var(--card);border-radius:16px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.78rem;box-shadow:var(--shadow)}
+.fc i{width:10px;background:#3b82c4;border-radius:4px;min-height:2px;margin-top:4px}
+.fc small{color:var(--muted)}
+nav{position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom,0px));max-width:560px;margin:0 auto;background:var(--forest);border-radius:26px;display:flex;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:40}
+nav button{flex:1;border:0;background:none;color:#b9d3c3;font:inherit;font-size:.68rem;padding:6px 2px;cursor:pointer;min-height:52px;border-radius:20px;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button[aria-current="page"]{background:var(--gold);color:#3b2a00;font-weight:800}
+.mhead{background:linear-gradient(160deg,#0f3d2a,#1f7a4d);color:#fff;padding:18px 16px 26px;border-radius:0 0 26px 26px}
+.mhead h1{font-size:1.6rem;margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:-14px 0 14px}
+.m{background:var(--card);border-radius:18px;padding:12px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;font-size:.85rem}
+.m b{display:block;font-size:1.7rem;line-height:1.1}
+.m .tic{width:40px;height:40px;border-radius:12px}
+.bars div.r{display:grid;grid-template-columns:100px 1fr 30px;gap:8px;align-items:center;font-size:.85rem;margin:6px 0}
+.bars i{display:block;height:14px;background:linear-gradient(90deg,var(--leaf),#7fd39d);border-radius:8px}
+.spark{width:100%;height:auto}
+.donutw{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.donut{width:120px;height:120px;border-radius:50%;position:relative}
+.donut::after{content:"";position:absolute;inset:26px;background:var(--card);border-radius:50%}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.86rem}
+td,th{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left}
+button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.tr{display:flex;gap:8px;align-items:center}
+.acc{width:40px;height:40px;border-radius:50%;border:0;background:var(--gold);color:#3b2a00;font:800 1rem system-ui;display:grid;place-items:center;cursor:pointer;flex:none}
+.link{background:none;border:0;color:var(--leaf);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;padding:6px 0}
+.phrow{display:flex;gap:8px;align-items:center}.phrow span{font-weight:800;background:var(--mint);color:var(--leaf);border-radius:12px;padding:11px 12px}
+.scanhero{display:flex;align-items:center;gap:14px;width:100%;margin-top:14px;padding:16px;border:0;border-radius:20px;background:linear-gradient(135deg,var(--forest),#1f7a4d);color:#fff;font:inherit;text-align:left;cursor:pointer;box-shadow:var(--shadow)}
+.scanhero b{display:block;font-size:1.15rem}.scanhero small{opacity:.9}
+nav button.sc{margin-top:-20px;background:var(--gold);color:#3b2a00;border-radius:22px;font-weight:800;min-height:64px;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+nav button.sc[aria-current="page"]{background:#fff}
+.cam{position:relative;border-radius:20px;overflow:hidden;background:#000;aspect-ratio:3/4;max-height:58vh;margin:8px 0}
+.cam video{width:100%;height:100%;object-fit:cover}
+.frame{position:absolute;inset:12%;border:3px dashed rgba(255,255,255,.75);border-radius:18px;pointer-events:none}
+.shots{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.shot{position:relative;width:86px;height:86px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot button{position:absolute;top:3px;right:3px;width:26px;height:26px;border:0;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;cursor:pointer}
+.hbadge{display:inline-block;padding:4px 14px;border-radius:999px;color:#fff;font-weight:800}
+.meter{height:8px;background:var(--line);border-radius:6px;overflow:hidden;margin:8px 0 4px}.meter i{display:block;height:100%;background:var(--leaf)}
+.scanning{text-align:center;font-weight:700}
+@media (prefers-reduced-motion:no-preference){.scanning{animation:pulse 1.3s ease-in-out infinite}@keyframes pulse{50%{opacity:.45}}}
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<div id="app"></div>
+<script>
+var S={};function reg(o){for(var k in o)S[k]=o[k]}
+reg({"app":"Agro Care Liberia","tab.market":"Market","tab.weather":"Weather","tab.pests":"Pests","tab.soil":"Soil","tab.crops":"Crops","tab.lang":"Languages",
+"m.title":"Farmers, buyers and suppliers","m.add":"Add a listing","m.type":"I am a","t.farmer":"Farmer selling","t.buyer":"Buyer","t.supplier":"Supplier","m.cat":"Product type","m.det":"Details","m.qty":"Quantity","m.price":"Price","m.county":"County","m.phone":"Phone or WhatsApp","m.photo":"Photo","m.gps":"Save my GPS location","m.save":"Post listing","m.call":"Call","m.wa":"WhatsApp","m.all":"All","m.none":"No listings found.","m.search":"Search","m.demo":"Demo","m.rm":"Remove","m.need":"Enter the county and a phone number.","m.ok":"Listing posted.","m.full":"Phone storage is full. Use a smaller photo.",
+"w.title":"Weather where you are","w.get":"Get weather for my location","w.now":"Now","w.rain":"Rain in the next 7 days","w.saved":"Saved report from","w.fail":"Could not get the weather. Check internet and allow location.","w.wait":"Finding your location...","w.wet":"Heavy rain is coming. Do not apply fertilizer or spray before it. Check that water can drain away.","w.dry":"Little rain is expected. Water young seedlings and use mulch.","w.ok":"Moderate rain is expected. Good time to plant if the rains have started.",
+"wx.clear":"Clear sky","wx.cloud":"Cloudy","wx.fog":"Fog","wx.rain":"Rain","wx.storm":"Thunderstorm",
+"p.title":"Pests and diseases","p.alerts":"Alerts","p.none":"No alerts now.","p.report":"Report what you see","p.crop":"Crop","p.what":"What do you see?","p.send":"Send report","p.thanks":"Report saved. Thank you.","p.guide":"Common problems","p.demo":"Alerts shown are demo examples until the Ministry connects its system.","p.signs":"Signs","p.act":"What to do",
+"s.title":"Soil and fertilizer","s.q":"What do you see on your land?","s.pick":"Choose one","s.rec":"What to do","s.safe":"Safety: wear gloves, do not use too much, and keep fertilizer away from children, food and water.",
+"c.title":"Crops library","c.plant":"When to plant","c.harvest":"When to harvest","c.tip":"Tip","c.note":"General guidance only. Confirm with your district agriculture officer.",
+"l.title":"Languages","l.help":"Translate the app text into the selected language. Native speakers must check every translation.","l.group":"Section","l.done":"translated","l.export":"Export translations","l.import":"Import translations","l.qa":"Open farmer questions and answers","l.en":"English is the source text. Choose another language in the top bar to translate.","l.ok":"Translations saved.",
+"cat.veg":"Vegetables","cat.seed":"Seeds","cat.fert":"Fertilizer","cat.tools":"Tools","cat.other":"Other"});
+var CROPS={rice:["Rice (upland)","Plant in April to May, at the start of the rains.","About 4 to 5 months after planting.","Use well-drained land. Weed early and often."],
+cassava:["Cassava","Plant March to May, or September to October.","About 9 to 12 months after planting.","Plant healthy stem cuttings only."],
+cocoa:["Cocoa","Plant seedlings in May to June, under light shade.","Pods come after about 3 to 4 years.","Remove sick pods often to stop black pod."],
+palm:["Oil palm","Plant seedlings at the start of the rains.","Fruit bunches come after about 3 years.","Keep the ground around young palms clean."],
+rubber:["Rubber","Plant at the start of the rains.","Tapping starts after about 6 to 7 years.","Protect young trees from fire and weeds."],
+maize:["Maize","Plant in April to May, with a second planting in August.","About 3 to 4 months after planting.","Check often for fall armyworm."],
+groundnut:["Groundnut","Plant in April to May, or August to September.","About 3 to 4 months after planting.","Plant early and use clean seed."],
+pepper:["Pepper","Start in a nursery, then transplant after 4 to 6 weeks.","First fruits after about 3 to 4 months.","Do not plant where water stands."]};
+var PESTS={fam:["Fall armyworm","maize","Ragged holes in leaves and wet, sawdust-like droppings in the leaf center.","Check plants twice a week. Hand-pick small caterpillars. Report to your agriculture officer before you spray."],
+cmd:["Cassava mosaic disease","cassava","Twisted leaves with yellow and green patches.","Pull out and burn sick plants. Plant only healthy cuttings."],
+blast:["Rice blast","rice","Grey, diamond-shaped spots on leaves.","Plant resistant varieties. Do not use too much nitrogen. Ask your officer for advice."],
+bp:["Cocoa black pod","cocoa","Brown to black spots that spread over the pod.","Remove and bury sick pods often. Prune for air flow. Harvest on time."],
+gr:["Groundnut rosette","groundnut","Plants stay small, with bushy yellow leaves.","Plant early and close together. Remove sick plants. Use clean seed."]};
+var SOIL={yel:["Old leaves turn pale yellow and growth is slow","Nitrogen may be low. Add compost or manure. Plant beans, groundnut or cowpea between crops. Use fertilizer only on an officer's advice."],
+pur:["Leaves look purple and roots grow poorly","Phosphorus may be low, often in acid soil. Add compost and a little wood ash. Ask for a soil test."],
+clay:["Water stands after rain and the soil is sticky or hard","This is heavy clay. Make raised beds or ridges, dig drains, and add compost and leaves."],
+sand:["Soil is loose and dries very fast","This is sandy soil. Add compost, use mulch, and apply small amounts of manure more often."],
+acid:["Red or yellow soil and poor yields year after year","Many Liberian soils are acidic. Add compost and a little wood ash or agricultural lime if advised. Do not burn the same land every year."],
+slope:["Rain washes soil away on slopes","Plant along the slope, not up and down. Keep the ground covered with mulch or cover crops. Keep grass strips."]};
+var k,i;
+for(k in CROPS)for(i=0;i<4;i++)S["crop."+k+"."+i]=CROPS[k][i];
+for(k in PESTS){S["pest."+k+".0"]=PESTS[k][0];S["pest."+k+".2"]=PESTS[k][2];S["pest."+k+".3"]=PESTS[k][3]}
+for(k in SOIL){S["soil."+k+".0"]=SOIL[k][0];S["soil."+k+".1"]=SOIL[k][1]}
+var COUNTIES=["Bomi","Bong","Gbarpolu","Grand Bassa","Grand Cape Mount","Grand Gedeh","Grand Kru","Lofa","Margibi","Maryland","Montserrado","Nimba","River Cess","River Gee","Sinoe"];
+var LANGS=["English","Bassa","Belle","Dei","Gbandi","Gio","Gola","Grebo","Kissi","Kpelle","Krahn","Kru","Loma","Mandingo","Mano","Mende","Vai"];
+var CATS=["rice","cassava","cocoa","palm","rubber","maize","groundnut","pepper","veg","seed","fert","tools","other"];
+var TABS=[["market","\uD83D\uDED2"],["weather","\u2601\uFE0F"],["pests","\uD83D\uDC1B"],["soil","\uD83C\uDF31"],["crops","\uD83C\uDF3E"],["lang","\uD83C\uDF10"]];
+
+var mem={};
+function ls(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return mem[k]!==undefined?mem[k]:d}}
+function sv(k,v){mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var lang=ls("fh-lang","English"),T=ls("fh-tr",{}),tab="home",mf="all",msg="",srv=ls("fh-srv",""),EV=ls("fh-ev",[]),Q=ls("fh-q",[]),tgrp="ui",pick="";
+function t(k){return (lang!=="English"&&T[lang]&&T[lang][k])||S[k]||k}
+function catName(c){return S["crop."+c+".0"]?t("crop."+c+".0"):t("cat."+c)}
+function opts(arr,sel,f){return arr.map(function(a){return'<option value="'+esc(a)+'"'+(a===sel?" selected":"")+">"+esc(f?f(a):a)+"</option>"}).join("")}
+
+function track(type,d){var e={t:Date.now(),type:type,lang:lang};for(var x in d)e[x]=d[x];EV.push(e);sv("fh-ev",EV);Q.push(e);sv("fh-q",Q);flush()}
+var lastPull=0,flushing=false;
+function api(p,o){o=o||{};var h={"Content-Type":"application/json"},tk=ls("fh-utk","")||ls("fh-dev","");if(tk)h.Authorization="Bearer "+tk;return fetch(srv+p,{method:o.method||"GET",headers:h,body:o.body?JSON.stringify(o.body):undefined}).then(function(r){return r.json().catch(function(){return{}}).then(function(j){if(!r.ok){if(r.status===401&&ls("fh-utk","")&&p.indexOf("/api/auth")<0){sv("fh-utk","");sv("fh-user",null);user=null}throw j}return j})})}
+function ensureDevice(){if(!srv)return Promise.reject();if(ls("fh-dev",""))return Promise.resolve();return api("/api/device",{method:"POST"}).then(function(j){sv("fh-dev",j.token)})}
+function flush(){if(!srv||!Q.length||!navigator.onLine||flushing)return;flushing=true;var b=Q.slice(0,200);ensureDevice().then(function(){return api("/api/events",{method:"POST",body:b})}).then(function(){Q=Q.slice(b.length);sv("fh-q",Q);flushing=false;if(Q.length)flush()}).catch(function(e){flushing=false;if(e&&/token/i.test(e.error||""))sv("fh-dev","")})}
+function syncPush(){var L=ls("fh-list",[]),jobs=L.filter(function(x){return x.own&&!x.sid&&!x.demo&&ls("fh-utk","")}).map(function(x){return api("/api/listings",{method:"POST",body:{type:x.type,cat:x.cat,det:x.det,qty:x.qty,price:x.price,county:x.county,phone:x.phone,gps:x.gps,img:x.img}}).then(function(r){x.sid=r.id}).catch(function(){})});return Promise.all(jobs).then(function(){sv("fh-list",L)})}
+function pull(force){
+  if(!srv||!navigator.onLine||(!force&&Date.now()-lastPull<20000))return;lastPull=Date.now();
+  ensureDevice().then(syncPush).then(function(){return Promise.all([api("/api/listings?limit=200"),api("/api/alerts")])}).then(function(r){
+    var keep=ls("fh-list",[]).filter(function(x){return x.own&&!x.sid&&!x.demo});
+    var rem=r[0].map(function(x){return{id:x.id,sid:x.id,type:x.type,cat:x.cat,det:x.det,qty:x.qty,price:x.price,county:x.county,phone:x.phone,gps:x.gps,img:x.img?srv+"/"+x.img:undefined,own:x.mine?1:0}});
+    sv("fh-list",keep.concat(rem));sv("fh-alerts",r[1]);
+    if(tab==="market"&&$("mlist"))$("mlist").innerHTML=mList();else if(tab==="home"||tab==="pests")render()
+  }).catch(function(){})
+}
+function boot(){flush();pull(true);api("/api/health").then(function(j){ussdCode=j.ussdCode||"";sv("fh-ussd",ussdCode);if(tab==="home")render()}).catch(function(){})}
+window.addEventListener("online",flush);
+
+function seed(){
+  if(ls("fh-seeded",0))return;var r=7,ev=[];function rnd(n){r=(r*9301+49297)%233280;return Math.floor(r/233280*n)}
+  function day(){return Date.now()-rnd(30)*864e5}
+  for(i=0;i<40;i++)ev.push({t:day(),type:"listing",kind:["farmer","farmer","buyer","supplier"][rnd(4)],cat:CATS[rnd(13)],county:COUNTIES[rnd(15)],lang:"English",demo:1});
+  for(i=0;i<14;i++)ev.push({t:day(),type:"pest",crop:Object.keys(CROPS)[rnd(8)],county:COUNTIES[rnd(15)],lang:"English",demo:1});
+  for(i=0;i<10;i++)ev.push({t:day(),type:"soil",key:Object.keys(SOIL)[rnd(6)],lang:"English",demo:1});
+  for(i=0;i<20;i++)ev.push({t:day(),type:"lang",lang:LANGS[rnd(17)],demo:1});
+  EV=EV.concat(ev);sv("fh-ev",EV);sv("fh-seeded",1)
+}
+function seedListings(){var L=ls("fh-list",null);if(L)return;sv("fh-list",[
+ {id:"d1",type:"farmer",cat:"cassava",det:"Fresh cassava roots",qty:"500 kg",price:"LRD 12,000",county:"Bong",phone:"+231 77 000 0001",demo:1},
+ {id:"d2",type:"buyer",cat:"rice",det:"Looking for local rice",qty:"2 tons",price:"Negotiable",county:"Montserrado",phone:"+231 77 000 0002",demo:1},
+ {id:"d3",type:"supplier",cat:"seed",det:"Improved groundnut seed",qty:"100 kg",price:"LRD 8,000",county:"Nimba",phone:"+231 77 000 0003",demo:1}])}
+function seedAlerts(){if(ls("fh-alerts",null))return;sv("fh-alerts",[{id:"a1",crop:"maize",title:"Fall armyworm reported in maize fields",county:"Nimba",sev:"high",date:new Date().toISOString().slice(0,10),demo:1},{id:"a2",crop:"cassava",title:"Cassava mosaic signs seen. Use clean cuttings.",county:"Lofa",sev:"medium",date:new Date().toISOString().slice(0,10),demo:1}])}
+
+reg({"tab.scan":"Scan","tab.home":"Home","h.hi":"Welcome, farmer!","h.sub":"Your friend for markets, weather, pests and soil.","h.ask":"Ask a question","h.alert":"Latest alert","c.cal":"Planting months","c.rains":"Usual rains","w.hum":"Humidity","m.flag":"Report","m.flagged":"Thank you. We will review this listing.","w.7":"Next 7 days"});
+var IC={home:'<path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/>',market:'<path d="M3 9h18l-2 11H5z"/><path d="M8 9l3-5M16 9l-3-5"/>',weather:'<path d="M7 18a4 4 0 0 1-.5-8A6 6 0 0 1 18 9a4.5 4.5 0 0 1 0 9z"/>',pests:'<ellipse cx="12" cy="14" rx="5" ry="6"/><path d="M12 8V5M9 4l1.5 2M15 4l-1.5 2M3 12h4M17 12h4M4 19l3-2M20 19l-3-2"/>',crops:'<path d="M12 21V10M12 10C12 6 9 4 5 4c0 4 2 6 7 6zM12 13c0-3 2-5 6-5 0 4-2 6-6 6"/>',soil:'<path d="M3 19c3-3 6-3 9 0s6 3 9 0M5 13c2-2 4-2 7 0s5 2 7 0M12 3v6M9 6l3-3 3 3"/>',lang:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',qa:'<path d="M4 5h16v11H9l-5 4z"/><path d="M9 9h6M9 12h4"/>',alert:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>'};
+function ico(n,s){return'<svg width="'+(s||24)+'" height="'+(s||24)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+IC[n]+"</svg>"}
+var CE={rice:"\uD83C\uDF3E",cassava:"\uD83C\uDF60",cocoa:"\uD83C\uDF6B",palm:"\uD83C\uDF34",rubber:"\uD83C\uDF33",maize:"\uD83C\uDF3D",groundnut:"\uD83E\uDD5C",pepper:"\uD83C\uDF36\uFE0F",veg:"\uD83E\uDD6C",seed:"\uD83C\uDF31",fert:"\uD83E\uDDEA",tools:"\uD83D\uDEE0\uFE0F",other:"\uD83D\uDCE6"};
+var CH={rice:48,cassava:28,cocoa:18,palm:36,rubber:130,maize:52,groundnut:32,pepper:6,veg:110,seed:95,fert:200,tools:220,other:260};
+var CAL={rice:[4,5],cassava:[3,4,5,9,10],cocoa:[5,6],palm:[4,5],rubber:[4,5],maize:[4,5,8],groundnut:[4,5,8,9],pepper:[]};
+var SE={yel:["\uD83C\uDF42",45],pur:["\uD83D\uDFE3",280],clay:["\uD83D\uDCA7",205],sand:["\uD83C\uDFDC\uFE0F",38],acid:["\uD83D\uDD34",8],slope:["\u26F0\uFE0F",150]};
+var cropSel="";
+function ct(c){return'<span class="ct" style="--h:'+(CH[c]||200)+'">'+(CE[c]||"\u2022")+"</span>"}
+function topbarOld(){return'<header class="top"><div class="brand"><span class="logo">'+ico("crops",22)+"</span><span style='display:flex;flex-direction:column;line-height:1.1'><b>"+t("app")+'</b><small style="font-size:.65rem;opacity:.85">Farming For All</small></span></div><label class="lp">'+ico("lang",18)+'<select id="lsel" aria-label="Language">'+opts(LANGS,lang)+"</select></label></header>"}
+function ph(ic,title){return'<div class="ph"><span class="phi">'+ico(ic,22)+"</span><h2>"+title+"</h2></div>"}
+function qaLink(cls,inner){return'<a class="'+cls+'" href="answers.html">'+inner+"</a>"}
+var HERO='<svg viewBox="0 0 400 210" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><circle cx="322" cy="62" r="34" fill="#f0b232" opacity=".28"/><circle cx="322" cy="62" r="22" fill="#f0b232"/><g class="drift" fill="#fff" opacity=".8"><ellipse cx="80" cy="48" rx="30" ry="9"/><ellipse cx="100" cy="41" rx="19" ry="9"/><ellipse cx="230" cy="76" rx="24" ry="7"/></g><path d="M0 150Q70 112 150 142T300 130T400 142V210H0z" fill="#2c8f58"/><path d="M0 172Q90 142 190 166T400 158V210H0z" fill="#1f6f45"/><g stroke="#9fdc86" stroke-width="2.5" opacity=".55" stroke-linecap="round"><path d="M20 210L70 176M52 210L96 178M84 210L122 180M116 210L148 183"/></g><path d="M356 210Q362 168 350 134" stroke="#5b3d24" stroke-width="6" fill="none" stroke-linecap="round"/><g fill="#14532d"><path d="M350 134Q328 118 306 130Q332 126 350 140z"/><path d="M350 134Q372 116 394 128Q368 126 350 140z"/><path d="M350 134Q338 108 322 104Q342 112 350 136z"/><path d="M350 134Q362 106 380 102Q358 110 350 136z"/></g></svg>';
+function wxIc(k,s){
+  var sun='<circle cx="24" cy="22" r="9" fill="#f0b232"/><g stroke="#f0b232" stroke-width="3" stroke-linecap="round"><path d="M24 5v4M24 35v4M7 22h4M37 22h4M12 10l3 3M33 31l3 3M12 34l3-3M33 13l3-3"/></g>';
+  var cl=function(f){return'<path d="M14 38a8 8 0 0 1-1-16 11 11 0 0 1 21 3 7 7 0 0 1-1 13z" fill="'+f+'"/>'};
+  var b=k==="wx.clear"?sun:k==="wx.cloud"?'<g transform="translate(-6,-6) scale(.8)">'+sun+"</g>"+cl("#fff"):k==="wx.fog"?cl("#e9eef0")+'<path d="M10 44h28M14 49h20" stroke="#cfd9de" stroke-width="3" stroke-linecap="round"/>':k==="wx.storm"?cl("#8794a3")+'<path d="M26 34l-7 10h5l-2 7 9-12h-5z" fill="#f0b232"/>':cl("#e9eef0")+'<path d="M17 42l-2 6M25 42l-2 6M33 42l-2 6" stroke="#3b82c4" stroke-width="3" stroke-linecap="round"/>';
+  return'<svg width="'+s+'" height="'+s+'" viewBox="0 0 48 52" aria-hidden="true" style="flex:none">'+b+"</svg>"
+}
+function mList(){
+  var L=ls("fh-list",[]),q=(document.getElementById("msearch")||{}).value||"";q=q.toLowerCase();
+  var r=L.filter(function(x){return(mf==="all"||x.type===mf)&&(!q||(catName(x.cat)+" "+x.det+" "+x.county).toLowerCase().indexOf(q)>=0)});
+  if(!r.length)return'<p class="muted">'+t("m.none")+"</p>";
+  return r.map(function(x){
+    var n=String(x.phone).replace(/[^\d]/g,"");if(n.charAt(0)==="0")n=n.slice(1);if(n.indexOf("231")!==0)n="231"+n;
+    return'<article class="lc"><div class="lc-i" style="--h:'+(CH[x.cat]||200)+'">'+(x.img?'<img alt="" src="'+x.img+'">':(CE[x.cat]||"\uD83D\uDCE6"))+'</div><div class="lc-b"><span class="tag '+x.type+'">'+t("t."+x.type)+"</span>"+(x.demo?'<span class="tag demo">'+t("m.demo")+"</span>":"")+"<h3>"+esc(catName(x.cat))+(x.det?": "+esc(x.det):"")+'</h3><div class="price">'+esc(x.price||"")+'</div><div class="pin">'+esc(x.qty||"")+" \u00B7 \uD83D\uDCCD "+esc(x.county)+(x.gps?" ("+esc(x.gps)+")":"")+'</div><div class="row"><a class="btn small solid" href="tel:'+esc(x.phone.replace(/[^\d+]/g,""))+'">'+t("m.call")+'</a><a class="btn small gold" target="_blank" rel="noopener" href="https://wa.me/'+n+'">'+t("m.wa")+"</a>"+(x.own?'<button class="btn small" data-a="rm" data-id="'+x.id+'">'+t("m.rm")+"</button>":"")+(x.sid&&!x.own?'<button class="btn small" data-a="flag" data-id="'+x.sid+'">'+t("m.flag")+"</button>":"")+"</div></div></article>"
+  }).join("")
+}
+function vMarket0(){
+  return ph("market",t("m.title"))+'<div class="chips">'+["all","farmer","buyer","supplier"].map(function(f){return'<button class="chip" data-a="mf" data-v="'+f+'" aria-pressed="'+(mf===f)+'">'+(f==="all"?t("m.all"):t("t."+f))+"</button>"}).join("")+'</div><input type="text" id="msearch" placeholder="\uD83D\uDD0D '+t("m.search")+'" aria-label="'+t("m.search")+'">'+
+  '<details class="add" style="margin-top:12px"><summary class="addb">\uFF0B '+t("m.add")+'</summary><div><label for="f-type">'+t("m.type")+'</label><select id="f-type">'+opts(["farmer","buyer","supplier"],"farmer",function(a){return t("t."+a)})+'</select><label for="f-cat">'+t("m.cat")+'</label><select id="f-cat">'+opts(CATS,"rice",catName)+'</select><label for="f-det">'+t("m.det")+'</label><input type="text" id="f-det"><label for="f-qty">'+t("m.qty")+'</label><input type="text" id="f-qty"><label for="f-price">'+t("m.price")+'</label><input type="text" id="f-price"><label for="f-county">'+t("m.county")+'</label><select id="f-county">'+opts(COUNTIES,dc())+'</select><label for="f-phone">'+t("m.phone")+'</label><input type="tel" id="f-phone" placeholder="+231 ..."><label for="f-photo">'+t("m.photo")+'</label><input type="file" id="f-photo" accept="image/*"><div class="row"><button class="btn small" type="button" data-a="gps">\uD83D\uDCCD '+t("m.gps")+'</button><span class="muted" id="gpsout"></span></div><div class="row"><button class="btn solid" type="button" data-a="post">'+t("m.save")+"</button></div></div></details>"+
+  '<p class="muted" id="msg" role="status">'+esc(msg)+'</p><div id="mlist">'+mList()+"</div>"
+}
+function wxKey(c){return c>=95?"wx.storm":c===0?"wx.clear":c<=3?"wx.cloud":c<50?"wx.fog":"wx.rain"}
+function wxHtml(c,stamp){
+  var d=c.data,sum=0,j,cells="",cur=wxKey(d.current.weather_code);
+  for(j=0;j<d.daily.time.length;j++){var r=d.daily.precipitation_sum[j]||0;sum+=r;cells+='<div class="fc"><b>'+esc(new Date(d.daily.time[j]).toLocaleDateString(undefined,{weekday:"short"}))+"</b>"+wxIc(wxKey(d.daily.weather_code[j]),34)+"<b>"+Math.round(d.daily.temperature_2m_max[j])+"\u00B0</b><small>"+Math.round(d.daily.temperature_2m_min[j])+'\u00B0</small><i style="height:'+Math.min(44,Math.round(r*2))+'px"></i><small>'+Math.round(r)+" mm</small></div>"}
+  var adv=sum>=60?"w.wet":sum<10?"w.dry":"w.ok";
+  return'<div class="wxhero '+cur.replace(".","-")+'">'+wxIc(cur,84)+'<div><div class="big">'+Math.round(d.current.temperature_2m)+"\u00B0</div><div><b>"+t(cur)+"</b></div><small>"+t("w.hum")+" "+Math.round(d.current.relative_humidity_2m)+'%</small></div></div><div class="note">'+t(adv)+"</div><h3>"+t("w.7")+'</h3><div class="fcs">'+cells+'</div><p class="muted">'+t("w.rain")+": "+Math.round(sum)+" mm"+(stamp?" \u00B7 "+t("w.saved")+" "+esc(new Date(c.t).toLocaleString()):"")+" \u00B7 Open-Meteo.com</p>"
+}
+function vWeather(){var c=ls("fh-wx",null);return ph("weather",t("w.title"))+'<button class="btn solid" data-a="wx">'+t("w.get")+'</button><p class="muted" id="wxmsg" role="status"></p><div id="wxout">'+(c?wxHtml(c,true):"")+"</div>"}
+function vPests(){
+  var A=ls("fh-alerts",[]),h=ph("pests",t("p.title"))+'<div class="note">'+t("p.demo")+"</div><h3>"+t("p.alerts")+"</h3>";
+  h+=A.length?A.map(function(a){return'<div class="alert '+esc(a.sev)+'" style="margin-top:0;margin-bottom:10px"><span class="ai">'+ico("alert",22)+'</span><div><span class="tag '+esc(a.sev)+'">'+esc(a.sev)+"</span>"+(a.demo?'<span class="tag demo">'+t("m.demo")+"</span>":"")+"<b>"+esc(a.title)+'</b><small>'+esc(a.county)+" \u00B7 "+esc(a.date)+"</small></div></div>"}).join(""):'<p class="muted">'+t("p.none")+"</p>";
+  h+='<details class="add"><summary class="addb">\uD83D\uDCE3 '+t("p.report")+'</summary><div><label for="r-crop">'+t("p.crop")+'</label><select id="r-crop">'+opts(Object.keys(CROPS),"rice",catName)+'</select><label for="r-county">'+t("m.county")+'</label><select id="r-county">'+opts(COUNTIES,dc())+'</select><label for="r-what">'+t("p.what")+'</label><input type="text" id="r-what"><div class="row"><button class="btn solid" data-a="rep">'+t("p.send")+'</button></div><p class="muted" id="rmsg" role="status"></p></div></details><h3>'+t("p.guide")+"</h3>";
+  Object.keys(PESTS).forEach(function(k){h+='<div class="card"><div style="display:flex;gap:12px;align-items:center">'+ct(PESTS[k][1])+"<div><b>"+t("pest."+k+".0")+'</b><div class="muted">'+catName(PESTS[k][1])+"</div></div></div><p><b>"+t("p.signs")+":</b> "+t("pest."+k+".2")+"</p><p><b>"+t("p.act")+":</b> "+t("pest."+k+".3")+"</p></div>"});
+  return h
+}
+function vSoil(){
+  var h=ph("soil",t("s.title"))+"<h3>"+t("s.q")+"</h3>";
+  Object.keys(SOIL).forEach(function(x){h+='<button class="opt'+(pick===x?" on":"")+'" data-a="soilp" data-id="'+x+'"><span class="ct" style="--h:'+SE[x][1]+'">'+SE[x][0]+"</span><span>"+esc(t("soil."+x+".0"))+"</span></button>"});
+  if(pick)h+='<div class="card" style="border-left:6px solid var(--leaf)"><h3 style="margin-top:0">\u2705 '+t("s.rec")+"</h3><p>"+t("soil."+pick+".1")+"</p></div>";
+  return h+'<div class="note">'+t("s.safe")+"</div>"
+}
+function calRow(ms,cls){var h='<div class="cal">';for(var j=0;j<12;j++)h+="<i"+(ms.indexOf(j+1)>=0?' class="'+cls+'"':"")+">"+MO.charAt(j)+"</i>";return h+"</div>"}
+var MO="JFMAMJJASOND";
+function vCrops(){
+  var h=ph("crops",t("c.title"))+'<div class="g2">'+Object.keys(CROPS).map(function(x){return'<button class="ctile'+(cropSel===x?" on":"")+'" data-a="cropp" data-id="'+x+'">'+ct(x)+"<span>"+t("crop."+x+".0")+"</span></button>"}).join("")+"</div>";
+  if(cropSel){var x=cropSel;h+='<div class="card"><div style="display:flex;gap:12px;align-items:center">'+ct(x)+"<h2>"+t("crop."+x+".0")+"</h2></div>";
+    if(CAL[x].length)h+="<h3>"+t("c.rains")+"</h3>"+calRow([4,5,6,7,8,9,10],"r")+"<h3>"+t("c.cal")+"</h3>"+calRow(CAL[x],"p");
+    h+="<p><b>"+t("c.plant")+":</b> "+t("crop."+x+".1")+"</p><p><b>"+t("c.harvest")+":</b> "+t("crop."+x+".2")+"</p><p><b>"+t("c.tip")+":</b> "+t("crop."+x+".3")+"</p></div>"}
+  return h+'<div class="note">'+t("c.note")+"</div>"
+}
+function vLang(){
+  var h=ph("lang",t("l.title"))+qaLink("btn solid",ico("qa",18)+" "+t("l.qa"));
+  if(lang==="English")return h+'<p class="muted">'+t("l.en")+"</p>";
+  var groups={ui:"App",crop:"Crops",pest:"Pests",soil:"Soil",wx:"Weather"},keys=Object.keys(S).filter(function(x){var p=x.split(".")[0];return tgrp==="ui"?!groups[p]||p==="wx":p===tgrp}),done=Object.keys(S).filter(function(x){return T[lang]&&T[lang][x]}).length;
+  h+='<p class="muted">'+t("l.help")+"</p><p><b>"+esc(lang)+"</b>: "+done+"/"+Object.keys(S).length+" "+t("l.done")+'</p><label for="tgrp">'+t("l.group")+'</label><select id="tgrp">'+Object.keys(groups).map(function(g){return'<option value="'+g+'"'+(g===tgrp?" selected":"")+">"+groups[g]+"</option>"}).join("")+"</select>";
+  keys.forEach(function(x){h+='<div class="card"><div class="muted">'+esc(S[x])+'</div><textarea rows="2" data-k="'+x+'" aria-label="'+esc(S[x])+'">'+esc((T[lang]&&T[lang][x])||"")+"</textarea></div>"});
+  return h+'<div class="row"><button class="btn" data-a="exp">'+t("l.export")+'</button><button class="btn" data-a="imp">'+t("l.import")+'</button><input type="file" id="impf" accept="application/json" hidden></div>'
+}
+function vHome(){
+  var c=ls("fh-wx",null),A=ls("fh-alerts",[]),h='<section class="hero">'+HERO+'<div class="hero-t"><h1>'+(user?t("h.hello")+" "+esc(user.name.split(" ")[0])+"!":t("h.hi"))+"</h1><p>"+t("h.sub")+"</p></div></section><main>";
+  if(c){var cur=wxKey(c.data.current.weather_code);h+='<button class="snap" data-a="tab" data-v="weather">'+wxIc(cur,48)+"<div><b>"+Math.round(c.data.current.temperature_2m)+"\u00B0C</b><span>"+t(cur)+"</span></div></button>"}
+  if(A[0])h+='<button class="alert '+esc(A[0].sev)+'" data-a="tab" data-v="pests"><span class="ai">'+ico("alert",22)+"</span><div><small>"+t("h.alert")+"</small><b>"+esc(A[0].title)+"</b></div></button>";
+  if(ussdCode)h+='<div class="note">'+t("h.ussd")+" <b>"+esc(ussdCode)+"</b></div>";
+  h+='<button class="scanhero" data-a="tab" data-v="scan"><span class="tic" style="--c:#c23b32">'+ico("scan",30)+'</span><span><b>'+t("scan.hero")+'</b><small>'+t("scan.herosub")+'</small></span></button>';
+  h+='<div class="tiles">'+[["market","market","#d98e04"],["weather","weather","#2a8fd1"],["pests","pests","#c23b32"],["soil","soil","#8a6a3d"],["crops","crops","#1f9156"],["lang","lang","#1d4f9f"]].map(function(x){return'<button class="tile" style="--c:'+x[2]+'" data-a="tab" data-v="'+x[0]+'"><span class="tic">'+ico(x[1],28)+"</span><b>"+t("tab."+x[0])+"</b></button>"}).join("")+qaLink("tile wide",'<span class="tic" style="--c:#f0b232;color:#3b2a00">'+ico("qa",28)+"</span><b>"+t("h.ask")+"</b>")+"</div></main>";
+  return h
+}
+reg({"h.hello":"Hello,","h.ussd":"No smartphone? Dial this code on any phone:","scan.hero":"Scan your plant","scan.herosub":"Take a photo to find out what is wrong and how to fix it",
+"a.login":"Log in","a.signup":"Sign up","a.reset":"Reset PIN","a.account":"My account","a.phone":"Phone number","a.sendcode":"Send me a code","a.code":"Code from SMS","a.name":"Your name","a.role":"I am a","a.pin":"PIN (4 to 6 numbers)","a.newpin":"New PIN (4 to 6 numbers)","a.pin2":"Repeat PIN","a.create":"Create my account","a.setpin":"Save new PIN","a.forgot":"Forgot your PIN?","a.logout":"Log out","a.sent":"Code sent. Check your SMS.","a.mismatch":"The two PINs are not the same.","a.noserver":"Cannot reach the server. Check your internet.","a.needpost":"Log in to post a listing.","a.nophone":"No smartphone? You can sign up and use Agro Care Liberia by dialling the Agro Care Liberia code on any button phone.","a.server":"Server settings","a.serveraddr":"Server address","a.serverhelp":"Leave this alone if the app was opened from your Farmer Bestie server.",
+"scan.title":"Scan a plant","scan.tips":"Take 1 to 3 clear photos in daylight: one close photo of the sick leaf or fruit, and one of the whole plant.","scan.open":"Open camera","scan.pick":"Take or choose photo","scan.snap":"Take photo","scan.flip":"Switch camera","scan.close":"Close camera","scan.nocam":"The camera is not available. Use Take or choose photo.","scan.max":"You can use up to 3 photos.","scan.note":"Anything you noticed? (optional)","scan.go":"Check my plant","scan.demo":"Try a demo","scan.need":"Take at least one photo first.","scan.offline":"Checking a plant needs internet and the Agro Care Liberia server. Your photos are kept here. Try again when you are online.","scan.wait":"Looking at your plant...","scan.fail":"The scan did not work. Try again with a clearer photo.","scan.notplant":"This does not look like a plant. Take a closer photo of a leaf.","scan.what":"What plant is it?","scan.sure":"How sure","scan.or":"or maybe","scan.health":"How healthy is it?","scan.problems":"What may be wrong","scan.factors":"What may be causing it","scan.fix":"What to do","scan.officer":"Show this to your district agriculture officer to be sure.","scan.disc":"This is an AI guess from photos, not a final answer. Confirm with an agriculture officer before spending money.","scan.report":"Report to the Ministry","scan.again":"Scan another plant","scan.hist":"Recent scans","scan.h.healthy":"Healthy","scan.h.mild":"A little stressed","scan.h.mod":"Problem","scan.h.sev":"Serious problem","scan.h.unk":"Not clear","scan.l.low":"maybe","scan.l.medium":"likely","scan.l.high":"very likely","scan.c.free":"free","scan.c.low":"low cost","scan.c.medium":"some cost","scan.prev":"How to stop it coming back"});
+IC.user='<circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/>';
+IC.scan='<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><path d="M12 17v-6M12 12c0-3-2-4.5-4.5-4.500 0 3 2 4.500 4.500 4.500zM12 14c0-2 1.500-3 3.500-3 0 2-1.500 3-3.500 3z"/>';
+var user=ls("fh-user",null),ussdCode=ls("fh-ussd",""),amode="login";
+function dc(){return user?user.county:"Montserrado"}
+function topbar(){return'<header class="top"><div class="brand"><span class="logo">'+ico("crops",22)+"</span><span style='display:flex;flex-direction:column;line-height:1.1'><b>"+t("app")+'</b><small style="font-size:.65rem;opacity:.85">Farming For All</small></span></div><div class="tr"><button class="acc" data-a="tab" data-v="'+(user?"account":"auth")+'" aria-label="'+(user?t("a.account"):t("a.login"))+'">'+(user?esc(user.name.charAt(0).toUpperCase()):ico("user",20))+'</button><label class="lp">'+ico("lang",18)+'<select id="lsel" aria-label="Language">'+opts(LANGS,lang)+"</select></label></div></header>"}
+function vMarket(){
+  var h=vMarket0();
+  if(srv&&!user)h=h.replace(/<details class="add"[\s\S]*?<\/details>/,'<div class="note">'+t("a.needpost")+'</div><p><button class="btn solid" data-a="tab" data-v="auth">'+t("a.login")+"</button></p>");
+  else if(user)h=h.replace('id="f-phone" placeholder="+231 ..."','id="f-phone" value="'+esc(user.phone)+'"');
+  return h
+}
+function srvBox(){return'<details class="q"><summary>'+t("a.server")+'</summary><div><label for="srv">'+t("a.serveraddr")+'</label><input type="url" id="srv" value="'+esc(srv)+'" placeholder="https://..."><p class="muted">'+t("a.serverhelp")+"</p></div></details>"}
+function vAuth(){
+  var m=amode,h=ph("user",m==="signup"?t("a.signup"):m==="reset"?t("a.reset"):t("a.login"));
+  h+='<div class="chips"><button class="chip" data-a="amode" data-v="login" aria-pressed="'+(m!=="signup")+'">'+t("a.login")+'</button><button class="chip" data-a="amode" data-v="signup" aria-pressed="'+(m==="signup")+'">'+t("a.signup")+"</button></div>";
+  h+='<div class="card"><label for="a-ph">'+t("a.phone")+'</label><div class="phrow"><span>+231</span><input type="tel" id="a-ph" inputmode="tel" autocomplete="tel-national" placeholder="0770 000 000"></div>';
+  if(m!=="login")h+='<div class="row"><button class="btn small" data-a="code">'+t("a.sendcode")+'</button></div><label for="a-code">'+t("a.code")+'</label><input type="text" id="a-code" inputmode="numeric" maxlength="6" autocomplete="one-time-code">';
+  if(m==="signup")h+='<label for="a-name">'+t("a.name")+'</label><input type="text" id="a-name" maxlength="40" autocomplete="name"><label for="a-county">'+t("m.county")+'</label><select id="a-county">'+opts(COUNTIES,"Montserrado")+'</select><label for="a-role">'+t("a.role")+'</label><select id="a-role">'+opts(["farmer","buyer","supplier"],"farmer",function(a){return t("t."+a)})+"</select>";
+  h+='<label for="a-pin">'+t(m==="reset"?"a.newpin":"a.pin")+'</label><input type="password" id="a-pin" inputmode="numeric" maxlength="6" autocomplete="'+(m==="login"?"current-password":"new-password")+'">';
+  if(m==="signup")h+='<label for="a-pin2">'+t("a.pin2")+'</label><input type="password" id="a-pin2" inputmode="numeric" maxlength="6" autocomplete="new-password">';
+  h+='<div class="row"><button class="btn solid" data-a="'+(m==="signup"?"signup":m==="reset"?"reset":"login")+'">'+t(m==="signup"?"a.create":m==="reset"?"a.setpin":"a.login")+"</button></div>";
+  if(m==="login")h+='<p><button class="link" data-a="amode" data-v="reset">'+t("a.forgot")+"</button></p>";
+  return h+'<p class="muted" id="amsg2" role="status"></p></div><div class="note">'+t("a.nophone")+(ussdCode?" <b>"+esc(ussdCode)+"</b>":"")+"</div>"+srvBox()
+}
+function vAccount(){
+  if(!user)return vAuth();
+  return ph("user",t("a.account"))+'<div class="card"><div style="display:flex;gap:12px;align-items:center"><span class="ct" style="--h:140">'+esc(user.name.charAt(0).toUpperCase())+'</span><div><h3 style="margin:0">'+esc(user.name)+'</h3><div class="muted">'+esc(user.phone)+" \u00B7 "+esc(user.county)+" \u00B7 "+t("t."+user.role)+'</div></div></div><div class="row"><button class="btn" data-a="logout">'+t("a.logout")+"</button></div></div>"+(ussdCode?'<div class="note">'+t("h.ussd")+" <b>"+esc(ussdCode)+"</b></div>":"")+srvBox()
+}
+function authDone(j){amode="login";sv("fh-utk",j.token);sv("fh-user",j.user);user=j.user;tab="home";render();pull(true);flush()}
+function authCall(path,body){api(path,{method:"POST",body:body}).then(authDone).catch(function(e){say("amsg2",(e&&e.error)||t("a.noserver"))})}
+
+var shots=[],camStream=null,scanRes=null,scanBusy=false,facing="environment",scans=ls("fh-scans",[]);
+var HC={healthy:["scan.h.healthy","#1f9156"],mild_stress:["scan.h.mild","#d98e04"],moderate_problem:["scan.h.mod","#e07a2f"],severe_problem:["scan.h.sev","#c23b32"],unknown:["scan.h.unk","#8a97a0"]};
+var DEMO_SCAN={is_plant:true,plant:{common:"Cassava",scientific:"Manihot esculenta",confidence:.86,alternatives:["Sweet potato"]},health:{status:"moderate_problem",summary:"Leaves are twisted with yellow and green patches.",confidence:.72},problems:[{name:"Cassava mosaic disease",type:"disease",likelihood:"high",signs:"Yellow and green patches and twisted leaves."}],factors:["Whiteflies spread this disease in warm weather.","Weak soil makes the plant less able to fight it."],solutions:[{step:"Pull out and burn the sick plants.",cost:"free"},{step:"Plant only healthy stem cuttings next time.",cost:"free"}],prevention:["Use clean cuttings from healthy plants.","Check plants every week."],see_officer:true,photo_advice:""};
+function stopCam(){if(camStream){camStream.getTracks().forEach(function(x){x.stop()});camStream=null}}
+function vScan(){
+  return ph("scan",t("scan.title"))+'<div class="note">'+t("scan.tips")+'</div><div id="camwrap"></div><div class="row"><button class="btn solid" data-a="cam">'+t("scan.open")+'</button><label class="btn" for="scanfile" style="margin:0">'+t("scan.pick")+'</label><input type="file" id="scanfile" accept="image/*" capture="environment" hidden></div><div class="shots" id="shots"></div><label for="scan-note">'+t("scan.note")+'</label><input type="text" id="scan-note" maxlength="200"><div class="row"><button class="btn gold" data-a="go">'+t("scan.go")+'</button><button class="btn" data-a="demoscan">'+t("scan.demo")+'</button></div><p class="muted" id="scanmsg" role="status"></p><div id="scanres"></div>'+scanHist()
+}
+function scanHist(){if(!scans.length)return"";return"<h3>"+t("scan.hist")+'</h3>'+scans.slice(0,6).map(function(x){var hc=HC[x.health]||HC.unknown;return'<div class="card" style="display:flex;gap:12px;align-items:center">'+(x.thumb?'<img alt="" src="'+x.thumb+'" width="52" height="52" style="border-radius:12px;object-fit:cover">':"")+"<div><b>"+esc(x.plant||"?")+'</b><br><span class="hbadge" style="background:'+hc[1]+';font-size:.75rem;padding:2px 10px">'+t(hc[0])+'</span> <span class="muted">'+esc(new Date(x.t).toLocaleDateString())+"</span></div></div>"}).join("")}
+function scanAfter(){renderShots();if(scanRes)showScan(scanRes.result,scanRes.demo,scanRes.disc)}
+function renderShots(){var el=$("shots");if(!el)return;el.innerHTML=shots.map(function(x,i){return'<div class="shot"><img alt="" src="'+x+'"><button data-a="rmshot" data-id="'+i+'" aria-label="Remove photo">\u00D7</button></div>'}).join("")}
+function frameToJpeg(src,w,h,max,q){var s=Math.min(1,max/Math.max(w,h)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*s));c.height=Math.max(1,Math.round(h*s));c.getContext("2d").drawImage(src,0,0,c.width,c.height);return c.toDataURL("image/jpeg",q)}
+function openCam(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){say("scanmsg",t("scan.nocam"));return}
+  stopCam();
+  navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing},width:{ideal:1280},height:{ideal:960}},audio:false}).then(function(st){
+    var w=$("camwrap");if(!w){st.getTracks().forEach(function(x){x.stop()});return}
+    camStream=st;
+    w.innerHTML='<div class="cam"><video playsinline muted autoplay></video><div class="frame"></div></div><div class="row"><button class="btn solid" data-a="snap">'+t("scan.snap")+'</button><button class="btn" data-a="flip">'+t("scan.flip")+'</button><button class="btn" data-a="closecam">'+t("scan.close")+"</button></div>";
+    var v=w.querySelector("video");v.srcObject=st;v.play().catch(function(){})
+  }).catch(function(){say("scanmsg",t("scan.nocam"))})
+}
+function closeCam(){stopCam();var w=$("camwrap");if(w)w.innerHTML=""}
+function snap(){var v=document.querySelector("#camwrap video");if(!v||!v.videoWidth)return;if(shots.length>=3){say("scanmsg",t("scan.max"));return}shots.push(frameToJpeg(v,v.videoWidth,v.videoHeight,1024,.72));renderShots();say("scanmsg",shots.length+"/3")}
+function addFile(f){
+  if(!f)return;if(shots.length>=3){say("scanmsg",t("scan.max"));return}
+  var im=new Image(),u=URL.createObjectURL(f);
+  im.onload=function(){shots.push(frameToJpeg(im,im.naturalWidth,im.naturalHeight,1024,.72));URL.revokeObjectURL(u);renderShots()};
+  im.onerror=function(){URL.revokeObjectURL(u);say("scanmsg",t("scan.fail"))};im.src=u
+}
+function saveScan(r,first){
+  var e={t:Date.now(),plant:r.plant.common,health:r.health.status,problem:(r.problems[0]||{}).name};
+  function put(){scans.unshift(e);scans=scans.slice(0,10);sv("fh-scans",scans)}
+  if(!first){put();return}
+  var im=new Image();im.onload=function(){e.thumb=frameToJpeg(im,im.width,im.height,96,.6);put()};im.onerror=put;im.src=first
+}
+function goScan(){
+  if(scanBusy)return;
+  if(!shots.length){say("scanmsg",t("scan.need"));return}
+  if(!srv||!navigator.onLine){say("scanmsg",t("scan.offline"));return}
+  scanBusy=true;say("scanmsg","");$("scanres").innerHTML='<div class="card scanning">'+t("scan.wait")+"</div>";
+  ensureDevice().then(function(){return api("/api/scan",{method:"POST",body:{images:shots,county:dc(),note:($("scan-note")||{}).value||""}})}).then(function(j){
+    scanBusy=false;scanRes={result:j.result,demo:false,disc:j.disclaimer};if(j.result.is_plant)saveScan(j.result,shots[0]);showScan(j.result,false,j.disclaimer)
+  }).catch(function(e){scanBusy=false;if($("scanres"))$("scanres").innerHTML="";say("scanmsg",(e&&e.error)||t("scan.fail"))})
+}
+function showScan(r,demo,disc){
+  var el=$("scanres");if(!el)return;
+  if(!r.is_plant){el.innerHTML='<div class="note">'+t("scan.notplant")+"</div>";return}
+  var hc=HC[r.health.status]||HC.unknown,pc=Math.round(r.plant.confidence*100),li=function(a){return"<ul>"+a.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+"</ul>"};
+  var h='<div class="card">'+(demo?'<span class="tag demo">'+t("m.demo")+"</span>":"")+'<div class="muted">'+t("scan.what")+'</div><b style="font-size:1.35rem">'+esc(r.plant.common||"?")+'</b> <i class="muted">'+esc(r.plant.scientific)+'</i><div class="meter"><i style="width:'+pc+'%"></i></div><div class="muted">'+t("scan.sure")+" "+pc+"%"+(r.plant.alternatives.length?" \u00B7 "+t("scan.or")+" "+esc(r.plant.alternatives.join(", ")):"")+"</div></div>";
+  h+='<div class="card"><div class="muted">'+t("scan.health")+'</div><span class="hbadge" style="background:'+hc[1]+'">'+t(hc[0])+"</span><p>"+esc(r.health.summary)+"</p></div>";
+  if(r.problems.length)h+='<div class="card"><h3 style="margin:0 0 6px">'+t("scan.problems")+"</h3>"+r.problems.map(function(p){return"<p><b>"+esc(p.name)+'</b> <span class="tag '+(p.likelihood==="high"?"high":p.likelihood==="medium"?"medium":"")+'">'+t("scan.l."+p.likelihood)+"</span><br>"+esc(p.signs)+"</p>"}).join("")+"</div>";
+  if(r.factors.length)h+='<div class="card"><h3 style="margin:0 0 6px">'+t("scan.factors")+"</h3>"+li(r.factors)+"</div>";
+  if(r.solutions.length)h+='<div class="card" style="border-left:6px solid var(--leaf)"><h3 style="margin:0 0 6px">'+t("scan.fix")+"</h3><ol>"+r.solutions.map(function(x){return"<li>"+esc(x.step)+' <span class="tag">'+t("scan.c."+x.cost)+"</span></li>"}).join("")+"</ol></div>";
+  if(r.prevention.length)h+='<div class="card"><h3 style="margin:0 0 6px">'+t("scan.prev")+"</h3>"+li(r.prevention)+"</div>";
+  if(r.see_officer)h+='<div class="note">\u260E '+t("scan.officer")+"</div>";
+  if(r.photo_advice)h+='<div class="note">\uD83D\uDCF7 '+esc(r.photo_advice)+"</div>";
+  el.innerHTML=h+'<p class="muted">'+esc(disc||t("scan.disc"))+'</p><div class="row"><button class="btn" data-a="repscan">'+t("scan.report")+'</button><button class="btn" data-a="again">'+t("scan.again")+"</button></div>"
+}
+function render(){
+  var app=document.getElementById("app");
+  if(tab!=="scan")stopCam();
+  var v={home:vHome,market:vMarket,weather:vWeather,pests:vPests,soil:vSoil,crops:vCrops,lang:vLang,scan:vScan,auth:vAuth,account:vAccount}[tab](),nv=["home","market","scan","weather","pests"];
+  app.innerHTML=topbar()+(tab==="home"?v:"<main>"+v+"</main>")+'<nav aria-label="Menu">'+nv.map(function(x){return'<button'+(x==="scan"?' class="sc"':"")+' data-a="tab" data-v="'+x+'"'+(tab===x?' aria-current="page"':"")+">"+ico(x,x==="scan"?26:22)+t("tab."+x)+"</button>"}).join("")+"</nav>";if(tab==="scan")scanAfter()
+}
+function dl(name,text,type){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500)}
+function $(id){return document.getElementById(id)}
+function say(id,m){var e=$(id);if(e)e.textContent=m}
+var gps="";
+function addListing(img){
+  var L=ls("fh-list",[]),x={id:"u"+Date.now(),type:$("f-type").value,cat:$("f-cat").value,det:$("f-det").value.trim(),qty:$("f-qty").value.trim(),price:$("f-price").value.trim(),county:$("f-county").value,phone:$("f-phone").value.trim(),own:1};
+  if(img)x.img=img;if(gps)x.gps=gps;L.unshift(x);
+  if(!sv("fh-list",L)){L.shift();msg=t("m.full");render();return}
+  track("listing",{kind:x.type,cat:x.cat,county:x.county});gps="";msg=t("m.ok");render();if(srv)pull(true)
+}
+document.addEventListener("click",function(e){
+  var el=e.target.closest("[data-a]");if(!el)return;var a=el.getAttribute("data-a"),v=el.getAttribute("data-v"),id=el.getAttribute("data-id");
+  if(a==="tab"){tab=v;msg="";render();window.scrollTo(0,0);if(v==="market"||v==="pests"||v==="home")pull()}
+  else if(a==="mf"){mf=v;render()}
+  else if(a==="rm"){var it=ls("fh-list",[]).filter(function(x){return x.id===id})[0];if(it&&it.sid&&srv)api("/api/listings/"+it.sid,{method:"DELETE"}).catch(function(){});sv("fh-list",ls("fh-list",[]).filter(function(x){return x.id!==id}));render()}
+  else if(a==="gps"){if(!navigator.geolocation){say("gpsout","GPS not available");return}navigator.geolocation.getCurrentPosition(function(p){gps=p.coords.latitude.toFixed(2)+", "+p.coords.longitude.toFixed(2);say("gpsout",gps)},function(){say("gpsout",t("w.fail"))})}
+  else if(a==="post"){
+    if(!$("f-phone").value.trim()){say("msg",t("m.need"));return}
+    var f=$("f-photo").files[0];
+    if(!f){addListing(null);return}
+    var im=new Image(),u=URL.createObjectURL(f);im.onload=function(){var s=Math.min(1,480/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*s;c.height=im.height*s;c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);addListing(c.toDataURL("image/jpeg",.6))};im.onerror=function(){addListing(null)};im.src=u
+  }
+  else if(a==="wx"){
+    say("wxmsg",t("w.wait"));
+    function show(c){$("wxout").innerHTML=wxHtml(c,false);say("wxmsg","");track("weather",{})}
+    if(!navigator.geolocation){say("wxmsg",t("w.fail"));return}
+    navigator.geolocation.getCurrentPosition(function(p){
+      var u="https://api.open-meteo.com/v1/forecast?latitude="+p.coords.latitude+"&longitude="+p.coords.longitude+"&current=temperature_2m,relative_humidity_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto";
+      fetch(u).then(function(r){return r.json()}).then(function(d){var c={t:Date.now(),data:d};sv("fh-wx",c);show(c)}).catch(function(){say("wxmsg",t("w.fail"))})
+    },function(){say("wxmsg",t("w.fail"))},{timeout:15000})
+  }
+  else if(a==="rep"){track("pest",{crop:$("r-crop").value,county:$("r-county").value});say("rmsg",t("p.thanks"))}
+  else if(a==="crop"){track("crop",{crop:id})}
+  else if(a==="soilp"){pick=id;track("soil",{key:id});render()}
+  else if(a==="cropp"){cropSel=id;track("crop",{crop:id});render()}
+  else if(a==="flag"){api("/api/listings/"+id+"/flag",{method:"POST"}).then(function(){say("msg",t("m.flagged"))}).catch(function(){})}
+  else if(a==="amode"){amode=v;render()}
+  else if(a==="code"){var ph0=$("a-ph").value.trim();if(!srv){say("amsg2",t("a.noserver"));return}api("/api/auth/request-code",{method:"POST",body:{phone:ph0,purpose:amode==="reset"?"reset":"signup"}}).then(function(j){say("amsg2",t("a.sent")+(j.devCode?" (test code "+j.devCode+")":""))}).catch(function(e){say("amsg2",(e&&e.error)||t("a.noserver"))})}
+  else if(a==="signup"){if(!srv){say("amsg2",t("a.noserver"));return}if($("a-pin").value!==$("a-pin2").value){say("amsg2",t("a.mismatch"));return}authCall("/api/auth/signup",{phone:$("a-ph").value.trim(),code:$("a-code").value.trim(),name:$("a-name").value.trim(),county:$("a-county").value,role:$("a-role").value,pin:$("a-pin").value,lang:lang})}
+  else if(a==="login"){if(!srv){say("amsg2",t("a.noserver"));return}authCall("/api/auth/login",{phone:$("a-ph").value.trim(),pin:$("a-pin").value})}
+  else if(a==="reset"){if(!srv){say("amsg2",t("a.noserver"));return}authCall("/api/auth/reset",{phone:$("a-ph").value.trim(),code:$("a-code").value.trim(),pin:$("a-pin").value})}
+  else if(a==="logout"){amode="login";sv("fh-utk","");sv("fh-user",null);user=null;tab="home";render()}
+  else if(a==="cam"){openCam()}
+  else if(a==="closecam"){closeCam()}
+  else if(a==="flip"){facing=facing==="environment"?"user":"environment";openCam()}
+  else if(a==="snap"){snap()}
+  else if(a==="rmshot"){shots.splice(+id,1);renderShots()}
+  else if(a==="go"){goScan()}
+  else if(a==="demoscan"){scanRes={result:DEMO_SCAN,demo:true};showScan(DEMO_SCAN,true)}
+  else if(a==="again"){shots=[];scanRes=null;render()}
+  else if(a==="repscan"){var pn=String((scanRes&&scanRes.result.plant.common)||"").toLowerCase(),ck=Object.keys(CROPS).filter(function(k){return pn.indexOf(k)>=0||pn.indexOf(CROPS[k][0].toLowerCase().split(" ")[0])>=0})[0];if(ck){track("pest",{crop:ck,county:dc()});say("scanmsg",t("p.thanks"))}}
+  else if(a==="exp"){dl("translations.json",JSON.stringify(T,null,2),"application/json")}
+  else if(a==="imp"){$("impf").click()}
+});
+document.addEventListener("input",function(e){if(e.target.id==="msearch")$("mlist").innerHTML=mList()});
+document.addEventListener("change",function(e){
+  var el=e.target;
+  if(el.id==="lsel"){lang=el.value;sv("fh-lang",lang);track("lang",{});render()}
+  else if(el.id==="ssel"){pick=el.value;if(pick)track("soil",{key:pick});render()}
+  else if(el.id==="scanfile"){addFile(el.files[0]);el.value=""}
+  else if(el.id==="tgrp"){tgrp=el.value;render()}
+  else if(el.id==="srv"){srv=el.value.trim().replace(/\/+$/,"");sv("fh-srv",srv);boot()}
+  else if(el.getAttribute&&el.getAttribute("data-k")){if(!T[lang])T[lang]={};T[lang][el.getAttribute("data-k")]=el.value.trim();sv("fh-tr",T)}
+  else if(el.id==="impf"){var f=el.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){try{var d=JSON.parse(rd.result);Object.keys(d).forEach(function(l){if(LANGS.indexOf(l)>0){T[l]=Object.assign(T[l]||{},d[l])}});sv("fh-tr",T);render()}catch(x){}};rd.readAsText(f)}
+});
+seed();seedListings();seedAlerts();render();
+if(srv)boot();else if(/^https?:$/.test(location.protocol)&&location.host.indexOf("claude")<0){fetch("api/health").then(function(r){return r.json()}).then(function(j){if(j&&j.app==="farmer-bestie"){ussdCode=j.ussdCode||"";sv("fh-ussd",ussdCode);srv=location.origin;sv("fh-srv",srv);boot()}}).catch(function(){})}
+window.addEventListener("online",boot);
+</script>
+</body>
+</html>
