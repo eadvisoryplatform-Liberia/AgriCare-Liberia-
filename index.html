@@ -1,94 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0f3d2a">
-  <meta name="description" content="Market prices, planting and pest advice, and food security help for Liberian farmers by SMS and USSD, even on a basic phone.">
-  <title>AgriCare-Liberia · Farming For All</title>
-  <link rel="icon" href="assets/logo.jpg">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AgriCare-Liberia · Farming For All</title>
+<link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <header class="site-header">
-    <img class="site-header__logo" src="assets/logo.jpg" alt="AgriCare-Liberia logo">
-    <div class="brand">
-      <strong class="brand__name">AgriCare-Liberia</strong>
-      <span class="brand__tagline">Farming For All</span>
-    </div>
-    <a class="btn btn--light" href="#app" data-open-app>Open the app</a>
-  </header>
-
-  <section class="hero">
-    <div class="hero__content">
-      <p class="hero__eyebrow">AgriCare-Liberia · Farming For All</p>
-      <h1>Farming for all, even on a basic phone.</h1>
-      <p>Market prices, planting and pest advice, and food security help by SMS and USSD.</p>
-      <a class="btn btn--gold" href="#app" data-open-app>Open the app</a>
-      <a class="btn btn--light" href="#sms">Try the SMS menu</a>
-    </div>
-  </section>
-
-  <main class="page">
-    <div class="grid" id="sms">
-      <section class="card" aria-labelledby="how-title">
-        <h2 id="how-title">How farmers use it by SMS</h2>
-        <ol>
-          <li>Text <b>2323</b> to the AgriCare number.</li>
-          <li>Reply with a number from the menu.</li>
-          <li>Choose <b>6 Join advisories</b> and your county to receive farm alerts.</li>
-        </ol>
-        <p class="muted">Text <code>STOP</code> any time to leave. No smartphone or internet needed.</p>
-        <p class="card__lead"><b>Can't read?</b> Option 1 also speaks to the farmer.</p>
-        <button class="btn btn--gold voice-btn" type="button" id="voice-intro" aria-pressed="false">🔊 Listen to option 1 (voice advice)</button>
-      </section>
-
-      <section class="card" aria-labelledby="try-title">
-        <h2 id="try-title">Try it here</h2>
-        <div class="phone">
-          <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-label="SMS conversation"></div>
-        </div>
-        <div class="row">
-          <input id="chat-input" type="text" placeholder="Type 2323 to start" aria-label="Your SMS message" inputmode="numeric" autocomplete="off">
-          <button class="btn btn--solid" type="button" id="chat-send">Send</button>
-        </div>
-        <p class="muted">Test mode: nothing is sent to a real phone.</p>
-      </section>
-    </div>
-
-    <section class="card" id="audio" aria-labelledby="audio-title">
-      <h2 id="audio-title">🔊 Audio: voice advice (Option 1)</h2>
-      <p class="muted">For farmers who cannot read. Press play to hear the advice.</p>
-      <audio id="voice-audio" class="audio-player" controls preload="metadata"></audio>
-      <p class="muted">Audio file: option1-voice-advice.mp3 (1 min 19 s)</p>
-    </section>
-
-    <section class="card" aria-labelledby="staff-title">
-      <h2 id="staff-title">Send an advisory (staff demo)</h2>
-      <label for="staff-county">County</label>
-      <select id="staff-county"><option value="">All subscribers</option></select>
-      <label for="staff-message">Message (keep under 160 characters)</label>
-      <textarea id="staff-message" rows="3" maxlength="300" placeholder="Armyworm reported in Nimba. Check maize twice a week."></textarea>
-      <div class="row">
-        <button class="btn btn--solid" type="button" id="staff-send">Send advisory</button>
-        <button class="btn" type="button" id="staff-load">Load stats</button>
-      </div>
-      <p class="muted" id="staff-status" role="status"></p>
-      <div id="staff-stats"></div>
-    </section>
-  </main>
-
-  <footer class="site-footer muted">
-    <b>AgriCare-Liberia</b> · Farming For All
-  </footer>
-
-  <div class="overlay" id="app-overlay" role="dialog" aria-modal="true" aria-label="AgriCare-Liberia app" hidden>
-    <button class="btn btn--gold overlay__close" type="button" id="app-close">Back to home</button>
-    <iframe class="overlay__frame" id="app-frame" title="AgriCare-Liberia app"></iframe>
-  </div>
-
-  <script src="js/data.js"></script>
-  <script src="js/menu-engine.js"></script>
-  <script src="js/main.js"></script>
+<div id="app"></div>
+<div id="fhwrap" style="display:none;position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg)"></div>
+<script src="js/app.js"></script>
 </body>
 </html>
