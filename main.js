@@ -9,8 +9,8 @@
   const { data, menu } = global.AgriCare;
   const byId = (id) => document.getElementById(id);
 
-  const VOICE_URL = "assets/voice-advice.mp3";
-  const APP_URL = "app/index.html";
+  const VOICE_URL = "voice-advice.mp3";
+  const APP_URL = "app.html";
   const PLANTING_PROMPT = "Which crop?"; // option 1 of the menu offers voice advice
 
   // ---------- SMS gateway (in-memory stand-in for a real backend) ----------

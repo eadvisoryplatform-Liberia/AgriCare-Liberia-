@@ -123,7 +123,7 @@ textarea {
   display: flex;
   align-items: flex-end;
   min-height: 62vh;
-  background: var(--forest) url("../assets/hero.jpg") center / cover;
+  background: var(--forest) url("hero.jpg") center / cover;
 }
 
 .hero::after {
